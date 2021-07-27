@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<b><a href="{{ url_for('new_item') }}">Add new item</a></b>
+<hr>
+
+{% if result %}
+  {% for item in result %}
+    <p>ID: {{item.get('id')}}</p>
+    <p>Name: {{item.get('name')}}</p>
+    <p>Price: {{item.get('price')}} </p>
+    <p>Quantity: {{item.get('qtty')}}</p>
+    <a href="{{ url_for('edit', id=item.get('id')) }}">Edit item</a>
+    <br>
+    <a href="{{ url_for('delete', id=item.get('id')) }}">Delete item</a>
+
+    <hr>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}
+
